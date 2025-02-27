@@ -1,9 +1,4 @@
-//
-//  ShoppingListAppApp.swift
-//  ShoppingListApp
-//
-//  Created by Iffat Nabila on 2025-02-13.
-//
+
 
 import SwiftUI
 
