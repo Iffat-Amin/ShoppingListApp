@@ -1,4 +1,3 @@
-
 import SwiftUI
 import CoreData
 
@@ -7,14 +6,17 @@ struct ContentView: View {
     @FetchRequest(fetchRequest: ShoppingItem.getAllItems()) private var shoppingItems: FetchedResults<ShoppingItem>
 
     @State private var showAddItemView = false
-    @State private var searchText = "" // Search text state
+    @State private var searchText = "" //Search text state
 
-    // Filtered items based on search input
+    // Filtered items based on search input (name OR category)
     var filteredItems: [ShoppingItem] {
         if searchText.isEmpty {
-            return Array(shoppingItems) // Show all items if search is empty
+            return Array(shoppingItems) // Show all if search is empty
         } else {
-            return shoppingItems.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+            return shoppingItems.filter { item in
+                item.name.localizedCaseInsensitiveContains(searchText) ||
+                item.category.localizedCaseInsensitiveContains(searchText) //Search by category
+            }
         }
     }
 
@@ -23,7 +25,7 @@ struct ContentView: View {
             VStack {
                 // If shopping list is empty, show a message
                 if filteredItems.isEmpty {
-                    Text("No items found.")
+                    Text("No matching items found.")
                         .font(.title2)
                         .foregroundColor(.gray)
                         .padding()
@@ -61,7 +63,7 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("Shopping List")
-            .searchable(text: $searchText, prompt: "Search items...") // Search Bar Added
+            .searchable(text: $searchText, prompt: "Search by name or category...") // Search Bar Updated
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -87,6 +89,3 @@ struct ContentView: View {
         return shoppingItems.reduce(0) { $0 + ($1.price * Double($1.quantity) * (1 + $1.tax / 100)) }
     }
 }
-
-
-
