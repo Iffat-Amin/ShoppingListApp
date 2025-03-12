@@ -7,19 +7,29 @@ struct ContentView: View {
     @FetchRequest(fetchRequest: ShoppingItem.getAllItems()) private var shoppingItems: FetchedResults<ShoppingItem>
 
     @State private var showAddItemView = false
+    @State private var searchText = "" // Search text state
+
+    // Filtered items based on search input
+    var filteredItems: [ShoppingItem] {
+        if searchText.isEmpty {
+            return Array(shoppingItems) // Show all items if search is empty
+        } else {
+            return shoppingItems.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        }
+    }
 
     var body: some View {
         NavigationView {
             VStack {
                 // If shopping list is empty, show a message
-                if shoppingItems.isEmpty {
-                    Text("No items found. Try adding some!")
+                if filteredItems.isEmpty {
+                    Text("No items found.")
                         .font(.title2)
                         .foregroundColor(.gray)
                         .padding()
                 } else {
                     List {
-                        ForEach(shoppingItems) { item in
+                        ForEach(filteredItems) { item in
                             NavigationLink(destination: EditItemView(item: item)) {
                                 HStack {
                                     VStack(alignment: .leading) {
@@ -51,6 +61,7 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("Shopping List")
+            .searchable(text: $searchText, prompt: "Search items...") // Search Bar Added
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()

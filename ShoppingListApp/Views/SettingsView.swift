@@ -1,10 +1,3 @@
-//
-//  SettingsView.swift
-//  ShoppingListApp
-//
-//  Created by Camila Lee on 2025-03-01.
-//
-
 import SwiftUI
 
 struct SettingsView: View {
