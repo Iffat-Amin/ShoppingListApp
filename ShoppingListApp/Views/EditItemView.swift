@@ -1,8 +1,13 @@
+//Iffat Amin Nabila- 101429832
+//Camile Lee - 100974597
+
 import SwiftUI
+
 
 struct EditItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode
+    // State variables bound to the form fields
     @State private var name: String
     @State private var category: String
     @State private var price: String
@@ -12,6 +17,7 @@ struct EditItemView: View {
     let categories = ["Food", "Medication", "Cleaning", "Electronics", "Other"]
     var item: ShoppingItem
 
+    // Initialize the form fields with the current values from the item
     init(item: ShoppingItem) {
         _name = State(initialValue: item.name)
         _category = State(initialValue: item.category)
@@ -23,6 +29,9 @@ struct EditItemView: View {
 
     var body: some View {
         NavigationView {
+            //Edited by camila
+           // Input fields for editing item details
+
             Form {
                 TextField("Item Name", text: $name)
                 Picker("Category", selection: $category) {
@@ -44,6 +53,7 @@ struct EditItemView: View {
         }
     }
 
+    //Edited by iffat
     // Function to update item details
     private func updateItem() {
         item.name = name

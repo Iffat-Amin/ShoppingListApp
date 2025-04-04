@@ -1,3 +1,6 @@
+//Iffat Amin Nabila- 101429832
+//Camile Lee - 100974597
+
 import SwiftUI
 import CoreData
 
@@ -8,6 +11,7 @@ struct ContentView: View {
     @State private var showAddItemView = false
     @State private var searchText = "" //Search text state
 
+    //Edited by Iffat
     // Filtered items based on search input (name OR category)
     var filteredItems: [ShoppingItem] {
         if searchText.isEmpty {
@@ -23,6 +27,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                //Edited by Camila
                 // If shopping list is empty, show a message
                 if filteredItems.isEmpty {
                     Text("No matching items found.")
@@ -50,6 +55,7 @@ struct ContentView: View {
                     }
                 }
 
+                //Edited by Camila
                 // Total Cost Calculation
                 Text("Total: $\(calculateTotal(), specifier: "%.2f")")
                     .font(.title)
@@ -63,7 +69,9 @@ struct ContentView: View {
                 .padding()
             }
             .navigationTitle("Shopping List")
-            .searchable(text: $searchText, prompt: "Search by name or category...") // Search Bar Updated
+            .searchable(text: $searchText, prompt: "Search by name or category...")
+            //edited by Iffat
+            // Search Bar Updated
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()

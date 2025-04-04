@@ -1,3 +1,6 @@
+//Iffat Amin Nabila- 101429832
+//Camile Lee - 100974597
+
 import SwiftUI
 
 struct SettingsView: View {

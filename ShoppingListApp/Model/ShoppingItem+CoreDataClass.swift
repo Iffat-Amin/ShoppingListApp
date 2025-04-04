@@ -1,5 +1,8 @@
+//Iffat Amin Nabila- 101429832
+//Camile Lee - 100974597
+//Edited by Iffat
 
-
+// Core Data entity class for ShoppingItem
 import Foundation
 import CoreData
 
