@@ -1,8 +1,6 @@
-
-//Iffat Amin Nabila- 101429832
-//Camile Lee - 100974597
-//Edited by Iffat
-
+// Iffat Amin Nabila- 101429832
+// Camile Lee - 100974597
+// Edited by Iffat
 
 import SwiftUI
 

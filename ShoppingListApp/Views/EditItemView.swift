@@ -1,8 +1,7 @@
-//Iffat Amin Nabila- 101429832
-//Camile Lee - 100974597
+// Iffat Amin Nabila- 101429832
+// Camile Lee - 100974597
 
 import SwiftUI
-
 
 struct EditItemView: View {
     @Environment(\.managedObjectContext) private var viewContext
